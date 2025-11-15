@@ -78,9 +78,9 @@ function Index() {
       <div className="flex items-center justify-center min-h-[calc(100vh-5rem)] p-4">
         <Card className="w-full max-w-md shadow-none">
           <CardHeader>
-            <CardTitle>Create Brand</CardTitle>
+            <CardTitle>Check Your Brand</CardTitle>
             <CardDescription>
-              Enter your brand information to get started
+              Enter your brand information to get insights
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -132,10 +132,10 @@ function Index() {
                 />
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full h-10"
                   disabled={createBrandMutation.isPending}
                 >
-                  {createBrandMutation.isPending ? "Creating..." : "Create Brand"}
+                  Check Your Brand
                 </Button>
               </form>
             </Form>

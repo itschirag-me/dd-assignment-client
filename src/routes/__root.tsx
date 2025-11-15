@@ -14,7 +14,7 @@ const RootLayout = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <div className="flex flex-col min-h-screen font-sans">
+        <div className="flex flex-col min-h-screen">
           <Navbar />
           <div className="container mx-auto">
             <Outlet />
