@@ -2,6 +2,16 @@
 
 A modern React application built with TypeScript, Vite, and TanStack Router.
 
+## 🔗 Live Links
+
+- **Frontend**: [https://flowai-chi.vercel.app/](https://flowai-chi.vercel.app/)
+- **Backend**: [https://api-server-sandy-six.vercel.app/](https://api-server-sandy-six.vercel.app/)
+
+## 📂 GitHub Repositories
+
+- **Frontend Repository**: [https://github.com/itschirag-me/dd-assignment-client](https://github.com/itschirag-me/dd-assignment-client)
+- **Backend Repository**: [https://github.com/itschirag-me/dd-assignment-server](https://github.com/itschirag-me/dd-assignment-server)
+
 ## Tech Stack
 
 - **React 19** - UI library
@@ -40,8 +50,8 @@ brew install pnpm
 
 1. **Clone the repository** (if not already done):
    ```bash
-   git clone <repository-url>
-   cd client
+   git clone https://github.com/itschirag-me/dd-assignment-client.git
+   cd dd-assignment-client
    ```
 
 2. **Install dependencies**:
@@ -58,10 +68,13 @@ brew install pnpm
    
    Add the following environment variable:
    ```env
-   VITE_API_URL=http://localhost:3000/api
+   VITE_API_URL=https://api-server-sandy-six.vercel.app
    ```
    
-   Replace `http://localhost:3000/api` with your actual API base URL.
+   For local development, you can use:
+   ```env
+   VITE_API_URL=http://localhost:3000/api
+   ```
 
 ## Running the Application
 
