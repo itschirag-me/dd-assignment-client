@@ -1,73 +1,172 @@
-# React + TypeScript + Vite
+# DigiDart Assignment - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application built with TypeScript, Vite, and TanStack Router.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **TanStack Router** - Type-safe routing
+- **TanStack Query** - Data fetching and state management
+- **Tailwind CSS** - Styling
+- **React Hook Form** - Form management
+- **Zod** - Schema validation
+- **Axios** - HTTP client
+- **Radix UI** - Accessible component primitives
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Before you begin, ensure you have the following installed:
 
-## Expanding the ESLint configuration
+- **Node.js** (v18 or higher recommended)
+- **pnpm** (package manager)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installing pnpm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+If you don't have pnpm installed, you can install it globally using npm:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install -g pnpm
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Or using Homebrew (macOS):
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+brew install pnpm
 ```
+
+## Setup Instructions
+
+1. **Clone the repository** (if not already done):
+   ```bash
+   git clone <repository-url>
+   cd client
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables**:
+   
+   Create a `.env` file in the root directory:
+   ```bash
+   touch .env
+   ```
+   
+   Add the following environment variable:
+   ```env
+   VITE_API_URL=http://localhost:3000/api
+   ```
+   
+   Replace `http://localhost:3000/api` with your actual API base URL.
+
+## Running the Application
+
+### Development Mode
+
+Start the development server:
+
+```bash
+pnpm dev
+```
+
+The application will be available at `http://localhost:5173` (or the next available port).
+
+The dev server includes:
+- Hot Module Replacement (HMR)
+- Fast refresh for React components
+- TypeScript type checking
+
+### Build for Production
+
+Build the application for production:
+
+```bash
+pnpm build
+```
+
+The production build will be created in the `dist` directory.
+
+### Preview Production Build
+
+Preview the production build locally:
+
+```bash
+pnpm preview
+```
+
+### Linting
+
+Run ESLint to check for code quality issues:
+
+```bash
+pnpm lint
+```
+
+## Project Structure
+
+```
+client/
+├── public/          # Static assets
+├── src/
+│   ├── assets/      # Images, animations, etc.
+│   ├── components/  # Reusable React components
+│   │   └── ui/      # UI component library
+│   ├── config/      # Configuration files (API instance, etc.)
+│   ├── hooks/       # Custom React hooks
+│   ├── lib/         # Utility functions and helpers
+│   ├── routes/      # Route components (TanStack Router)
+│   └── main.tsx     # Application entry point
+├── .env             # Environment variables (create this)
+├── package.json     # Dependencies and scripts
+└── vite.config.ts   # Vite configuration
+```
+
+## Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm preview` - Preview production build
+- `pnpm lint` - Run ESLint
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_API_URL` | Base URL for the API backend | Yes |
+
+## Troubleshooting
+
+### Port Already in Use
+
+If port 5173 is already in use, Vite will automatically use the next available port. You can also specify a custom port:
+
+```bash
+pnpm dev -- --port 3000
+```
+
+### Dependency Issues
+
+If you encounter dependency issues, try:
+
+```bash
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
+```
+
+### TypeScript Errors
+
+Ensure TypeScript is properly configured. The project uses:
+- `tsconfig.json` - Base TypeScript configuration
+- `tsconfig.app.json` - Application-specific configuration
+- `tsconfig.node.json` - Node.js-specific configuration
+
+## Additional Resources
+
+- [Vite Documentation](https://vite.dev/)
+- [TanStack Router Documentation](https://tanstack.com/router)
+- [React Documentation](https://react.dev/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/)
